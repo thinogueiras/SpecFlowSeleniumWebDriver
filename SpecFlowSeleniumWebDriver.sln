@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowSeleniumWebDriver", "SpecFlowSeleniumWebDriver\SpecFlowSeleniumWebDriver.csproj", "{CE285ABA-7CFF-4B81-8BAC-05762799500B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE285ABA-7CFF-4B81-8BAC-05762799500B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE285ABA-7CFF-4B81-8BAC-05762799500B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE285ABA-7CFF-4B81-8BAC-05762799500B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE285ABA-7CFF-4B81-8BAC-05762799500B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E481B19-FDC2-4CE5-A335-583A8269FF39}
+	EndGlobalSection
+EndGlobal

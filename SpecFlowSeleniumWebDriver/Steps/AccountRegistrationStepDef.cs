@@ -2,6 +2,8 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using SpecFlowSeleniumWebDriver.Drivers;
+using SpecFlowSeleniumWebDriver.Enums;
 using System.IO;
 using TechTalk.SpecFlow;
 
@@ -18,11 +20,15 @@ namespace SpecFlowSeleniumWebDriver.Steps
         private const string Username = "thiagonogueira@hotmail.com.br";
         private const string Password = "625836";
 
+        [BeforeScenario]
+        public void InitializeDriver()
+        {
+            driver = DriverFactory.GetDriver(Browser.Chrome);            
+        }
+
         [Given(@"que estou logado na aplicação")]
         public void GivenQueEstouLogadoNaAplicacao()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://seubarriga.wcaquino.me/");
             driver.FindElement(By.Id("email")).SendKeys(Username);
             driver.FindElement(By.Id("senha")).SendKeys(Password);
@@ -47,12 +53,6 @@ namespace SpecFlowSeleniumWebDriver.Steps
             element = driver.FindElement(By.XPath("/html/body/div[1]"));
             text = element.Text;
             Assert.AreEqual(mensagem, text);            
-        }
-
-        [After]
-        public void CloseBrowser()
-        {
-            driver.Quit();
-        }
+        }        
     }    
 }

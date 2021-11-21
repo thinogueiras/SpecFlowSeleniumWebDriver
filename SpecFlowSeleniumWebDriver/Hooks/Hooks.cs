@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SpecFlowSeleniumWebDriver.Drivers;
+using SpecFlowSeleniumWebDriver.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,6 @@ namespace SpecFlowSeleniumWebDriver.Hooks
             driver.FindElement(By.TagName("button")).Click();
             driver.FindElement(By.LinkText("reset")).Click();
             driver.Quit();
-        }       
+        }        
     }
 }

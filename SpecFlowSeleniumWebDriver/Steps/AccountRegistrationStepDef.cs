@@ -1,45 +1,26 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-<<<<<<< HEAD
-using OpenQA.Selenium.Firefox;
 using SpecFlowSeleniumWebDriver.Drivers;
-using SpecFlowSeleniumWebDriver.Enums;
-using System.IO;
-=======
-using SpecFlowSeleniumWebDriver.Drivers;
->>>>>>> 604ef3a45979a4c3858720f0cff784ff8ceb363c
 using TechTalk.SpecFlow;
 
 namespace SpecFlowSeleniumWebDriver.Steps
 {
     [Binding]
     public class AccountRegistrationStepDef
-    {
-        private static WebDriver driver;
-
+    {        
         private IWebElement element;
         private string text;
+        private const string username = "thiagonogueira@hotmail.com.br";
+        private const string password = "625836";
 
-        private const string Username = "thiagonogueira@hotmail.com.br";
-        private const string Password = "625836";
-
-<<<<<<< HEAD
-        [BeforeScenario]
-        public void InitializeDriver()
-        {
-            driver = DriverFactory.GetDriver(Browser.Chrome);            
-=======
         [BeforeFeature]
         public static void CleanDatabase()
         {
-            var chromeOptions = new ChromeOptions();
-            chromeOptions.AddArgument("--headless");
-
-            driver = new ChromeDriver(chromeOptions);
+            DriverFactory.GetDriver(Enums.Browser.Chrome, true);
             driver.Navigate().GoToUrl("https://seubarriga.wcaquino.me/");
-            driver.FindElement(By.Id("email")).SendKeys(Username);
-            driver.FindElement(By.Id("senha")).SendKeys(Password);
+            driver.FindElement(By.Id("email")).SendKeys(username);
+            driver.FindElement(By.Id("senha")).SendKeys(password);
             driver.FindElement(By.TagName("button")).Click();
             driver.FindElement(By.LinkText("reset")).Click();
         }
@@ -47,16 +28,21 @@ namespace SpecFlowSeleniumWebDriver.Steps
         [BeforeScenario]
         public void Setup()
         {
-            driver = DriverFactory.GetDriver(Enums.Browser.Chrome);
->>>>>>> 604ef3a45979a4c3858720f0cff784ff8ceb363c
+            DriverFactory.GetDriver(Enums.Browser.Chrome);
+        }
+
+        [AfterScenario]
+        public void CloseBrowser()
+        {
+            DriverFactory.KillDriver();
         }
 
         [Given(@"que estou logado na aplicação")]
         public void GivenQueEstouLogadoNaAplicacao()
         {
             driver.Navigate().GoToUrl("https://seubarriga.wcaquino.me/");
-            driver.FindElement(By.Id("email")).SendKeys(Username);
-            driver.FindElement(By.Id("senha")).SendKeys(Password);
+            driver.FindElement(By.Id("email")).SendKeys(username);
+            driver.FindElement(By.Id("senha")).SendKeys(password);
             driver.FindElement(By.TagName("button")).Click();
             element = driver.FindElement(By.XPath("/html/body/div[1]"));
             text = element.Text;
@@ -77,19 +63,7 @@ namespace SpecFlowSeleniumWebDriver.Steps
         {
             element = driver.FindElement(By.XPath("/html/body/div[1]"));
             text = element.Text;
-<<<<<<< HEAD
-            Assert.AreEqual(mensagem, text);            
-        }        
-    }    
-=======
             Assert.AreEqual(mensagem, text);
-        }
-
-        [AfterTestRun]
-        public static void CloseBrowser()
-        {
-            driver.Quit();
-        }
+        }        
     }
->>>>>>> 604ef3a45979a4c3858720f0cff784ff8ceb363c
 }
